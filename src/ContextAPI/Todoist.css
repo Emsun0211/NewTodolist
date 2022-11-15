@@ -1,0 +1,38 @@
+.Todoist-container {
+	background-color: aquamarine;
+	width: 50%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.Todoist-input {
+	border: 1px solid #000;
+	margin: 0.5rem;
+}
+
+.add-btn {
+	background-color: #000;
+	color: #fff;
+	padding: 0.1rem 0.5rem;
+	border-radius: 5px;
+}
+
+.input-container {
+	width: 100%;
+	margin: 1rem auto;
+}
+
+.todoist-li {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem;
+}
+
+.completed {
+	text-decoration: line-through;
+	background-color: #666;
+	color: #fff;
+}

@@ -1,0 +1,27 @@
+Form {
+	margin: 3rem auto;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 500px;
+}
+.input-container {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+input {
+	padding: 0.5rem;
+}
+
+.input-error {
+	border: 1px solid red;
+}
+
+.errors {
+	color: red;
+}
+
+h3 {
+	text-align: center;
+}
