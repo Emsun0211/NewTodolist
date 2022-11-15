@@ -4,6 +4,8 @@ import {
 	LOGIN_USER,
 	TOGGLE_COMPLETE,
 	UPDATE_TODO,
+	FIND_TODO_BY_ID,
+	LOAD_TODOS,
 } from "./Todotype";
 
 export const TodoReducer = (state, action) => {
@@ -14,6 +16,12 @@ export const TodoReducer = (state, action) => {
 			return {
 				...state,
 				isAuthenticated: true,
+			};
+
+		case LOAD_TODOS:
+			return {
+				...state,
+				todos: action.payload,
 			};
 		case ADD_TODO:
 			return {
@@ -47,6 +55,12 @@ export const TodoReducer = (state, action) => {
 						? { ...todo, title: action.payload.title }
 						: todo
 				),
+			};
+
+		case FIND_TODO_BY_ID:
+			return {
+				...state,
+				todo: state.todos.find((todo) => todo.id === action.payload), // return: obj
 			};
 
 		default:

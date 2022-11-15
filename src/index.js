@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { TodoState } from "./ContextAPI/helper/context/todo_context/TodoState";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<TodoState>
-			<App />
-		</TodoState>
+		<BrowserRouter>
+			<TodoState>
+				<App />
+			</TodoState>
+		</BrowserRouter>
 	</React.StrictMode>
 );
 

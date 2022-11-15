@@ -7,6 +7,8 @@ import {
 	LOGIN_USER,
 	TOGGLE_COMPLETE,
 	UPDATE_TODO,
+	FIND_TODO_BY_ID,
+	LOAD_TODOS,
 } from "./Todotype";
 
 export const TodoState = ({ children }) => {
@@ -20,6 +22,10 @@ export const TodoState = ({ children }) => {
 
 	const login = () => {
 		dispatch({ type: LOGIN_USER });
+	};
+
+	const loadTodos = (arrayOfTodos) => {
+		dispatch({ type: LOAD_TODOS, payload: arrayOfTodos });
 	};
 
 	const addTodo = (todoObj) => {
@@ -37,16 +43,22 @@ export const TodoState = ({ children }) => {
 	const updateTodo = (newTodoObject) => {
 		dispatch({ type: UPDATE_TODO, payload: newTodoObject });
 	};
+
+	const findTodoById = (todoId) => {
+		dispatch({ type: FIND_TODO_BY_ID, payload: todoId });
+	};
 	return (
 		<TodoContext.Provider
 			value={{
 				isAuthenticated: state.isAuthenticated,
 				todos: state.todos,
 				login,
+				loadTodos,
 				addTodo,
 				deleteTodo,
 				toggleComplete,
 				updateTodo,
+				findTodoById,
 				...state,
 			}}>
 			{children}

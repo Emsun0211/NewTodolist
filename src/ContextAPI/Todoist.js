@@ -1,10 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TodoContext } from "./helper/context/todo_context/TodoContext";
 import "./Todoist.css";
+import { Link } from "react-router-dom";
+import TodoService from "./helper/context/todo_context/todo.services";
 
 export const Todoist = () => {
 	console.log(process.env.REACT_APP_BASE_URL);
 	const {
+		loadTodos,
 		todos,
 		addTodo,
 		deleteTodo,
@@ -39,6 +42,18 @@ export const Todoist = () => {
 		settitle("");
 		setisEditMode(false);
 	};
+
+	// const loadTodos = async () => {
+	// 	const response = await TodoService.getTodos();
+	// 	console.log(response);
+	// };
+
+	useEffect(() => {
+		TodoService.getTodos().then((todos) => {
+			console.log(todos);
+			loadTodos(todos);
+		});
+	}, []);
 
 	return (
 		<div className='Todoist-container'>
@@ -78,6 +93,9 @@ export const Todoist = () => {
 										className={`todoist-li ${isCompleted ? "completed" : null}`}
 										key={id}>
 										{title}
+										<Link to={`${id}`}>
+											<button className='action-btn'>👁</button>
+										</Link>
 										<span onClick={() => toggleComplete(id)}>
 											{isCompleted ? "❌" : "✅"}
 										</span>
